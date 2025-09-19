@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Cirlei Buzetti - Saúde e Estética Avançada</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2rem;
+            height: 100px; /* Fixed height for the header area */
+        }
+
+        .header-logo {
+            height: 80px; /* Control the height of the logo image */
+            width: auto;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding-top: 120px; /* Add padding to avoid content hiding behind fixed header */
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.1) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(218, 165, 32, 0.1) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="marble" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 0L20 30L40 10L60 40L80 20L100 50L100 0Z" fill="%23ffffff" opacity="0.3"/><path d="M0 100L30 70L50 90L70 60L90 80L100 50L100 100Z" fill="%23ffe6f0" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23marble)"/></svg>');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 192, 203, 0.1), rgba(255, 255, 255, 0.8));
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.6; }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.3), rgba(218, 165, 32, 0.2));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(-10px) rotate(240deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            color: #FFC0CB;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #FFC0CB 0%, #DAA520 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 25px rgba(255, 192, 203, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 192, 203, 0.4);
+        }
+
+        .hero-image {
+            text-align: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Procedures Section */
+        .procedures {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, rgba(255, 192, 203, 0.05) 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .section-header .highlight {
+            color: #FFC0CB;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .procedures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .procedure-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .procedure-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .procedure-card:nth-child(3n) {
+            animation-delay: 0.4s;
+        }
+
+        .procedure-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFC0CB 0%, #DAA520 100%);
+        }
+
+        .procedure-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 192, 203, 0.2);
+        }
+
+        .procedure-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.1), rgba(218, 165, 32, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .procedure-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .procedure-image i {
+            font-size: 4rem;
+            color: #FFC0CB;
+            z-index: 1;
+        }
+
+        .procedure-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .procedure-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1.5rem 0 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #FFC0CB;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #FFC0CB;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFC0CB, #DAA520);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 192, 203, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            text-align: center;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                justify-content: center;
+                padding: 0 1rem;
+                height: 90px;
+            }
+            
+            .header-logo {
+                height: 70px;
+            }
+
+            .hero {
+                padding-top: 110px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image img {
+                max-height: 300px;
+            }
+
+            .procedures-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="header_logo.png" alt="Dra. Cirlei Buzetti Logo e Contato" class="header-logo">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Realce sua <span class="highlight">Beleza Natural</span> com Tecnologia Avançada</h1>
+                <p>Descubra tratamentos personalizados e inovadores que respeitam sua essência, proporcionando resultados naturais e harmoniosos para sua autoestima e bem-estar.</p>
+                <a href="https://wa.me/5511950685596" class="cta-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Agende sua Consulta
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="logo.png" alt="Foto Dra. Cirlei Buzetti" style="max-width: 100%; height: auto; max-height: 400px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <section class="procedures">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>Nossos <span class="highlight">Procedimentos</span></h2>
+                <p>Conheça nossos tratamentos exclusivos, desenvolvidos com as mais avançadas técnicas em estética e dermatologia para realçar sua beleza natural.</p>
+            </div>
+            
+            <div class="procedures-grid">
+                <div class="procedure-card scroll-reveal">
+                    <div class="procedure-image">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Rejuvenescimento Facial com Micro-Luz</h3>
+                    <p>Um tratamento inovador que utiliza feixes de luz para estimular o colágeno, suavizando linhas de expressão e melhorando a luminosidade da pele.</p>
+                </div>
+
+                <div class="procedure-card scroll-reveal">
+                    <div class="procedure-image">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Harmonização Facial Suave</h3>
+                    <p>Técnica que realça a beleza natural do rosto com o uso de preenchedores delicados para criar contornos mais definidos e equilibrados.</p>
+                </div>
+
+                <div class="procedure-card scroll-reveal">
+                    <div class="procedure-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Renovação Dérmica Profunda</h3>
+                    <p>Um peeling avançado para renovação celular, que ajuda a combater manchas, cicatrizes de acne e melhora a textura geral da pele.</p>
+                </div>
+
+                <div class="procedure-card scroll-reveal">
+                    <div class="procedure-image">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Terapia de Hidratação Profunda</h3>
+                    <p>Procedimento que utiliza microagulhas e ativos específicos para repor a hidratação da pele de dentro para fora, garantindo um aspecto viçoso e saudável.</p>
+                </div>
+
+                <div class="procedure-card scroll-reveal">
+                    <div class="procedure-image">
+                        <i class="fas fa-kiss"></i>
+                    </div>
+                    <h3>Contorno Labial e Volumização</h3>
+                    <p>Aplicação de substâncias seguras para definir o contorno dos lábios e adicionar um volume sutil e natural.</p>
+                </div>
+
+                <div class="procedure-card scroll-reveal">
+                    <div class="procedure-image">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Bioestimulação Dérmica</h3>
+                    <p>Tratamento que incentiva a produção de colágeno e elastina, proporcionando mais firmeza e sustentação à pele do rosto e pescoço.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt" style="color: #FFC0CB; margin-right: 8px;"></i>Rua José Versolato, nº 111<br>Torre B - Sala 916 Domo Business<br>Centro, São Bernardo do Campo - SP</p>
+            </div>
+            <div class="footer-section">
+                <h3>Telefone</h3>
+                <p><i class="fas fa-phone" style="color: #FFC0CB; margin-right: 8px;"></i><a href="tel:11950685596">11 95068-5596</a></p>
+                <h3 style="margin-top: 1rem;">Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://instagram.com/dra.cirleibuzetti" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5511950685596" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Horário de Atendimento</h3>
+                <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h<br>Domingo: Fechado</p>
+                <p style="margin-top: 1rem; font-style: italic; color: #FFC0CB;">Agende sua consulta e descubra como realçar sua beleza natural.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dra. Cirlei Buzetti - Saúde e Estética Avançada. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('revealed');
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        function smoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Parallax effect for floating elements
+        function parallaxEffect() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        }
+
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            smoothScroll();
+        });
+
+        // Add hover effects to procedure cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.procedure-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click animation to CTA button
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Performance optimization: throttle scroll events
+        let ticking = false;
+        function updateOnScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    revealOnScroll();
+                    parallaxEffect();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', updateOnScroll);
+    </script>
+</body>
+</html>
+
+
+
